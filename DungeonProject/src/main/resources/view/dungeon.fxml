@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane onKeyReleased="#playerMove" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DungeonController">
+    <VBox layoutX="249.0" layoutY="120.0" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane opacity="0.73" prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: brown;">
+            <HBox layoutY="-1.0" prefHeight="65.0" prefWidth="800.0" spacing="10.0">
+                <Button mnemonicParsing="false" onAction="#displayBag" prefHeight="65.0" prefWidth="135.0" style="-fx-background-color: black; -fx-border-radius: 134;" text="Inventaire" textFill="WHITE" />
+            <VBox>
+               <children>
+                  <VBox>
+                     <children>
+                        <VBox prefHeight="65.0" prefWidth="174.0">
+                           <children>
+                                   <StackPane prefHeight="49.0" prefWidth="137.0">
+                                       <Label text="Vies" textFill="WHITE">
+                                           <font>
+                                               <Font name="System Bold" size="12.0" />
+                                           </font>
+                                       </Label>
+                                   </StackPane>
+                                  <HBox fx:id="lifeBox" prefHeight="58.0" prefWidth="137.0">
+                                 <StackPane prefHeight="33.0" prefWidth="37.0">
+                                    <children>
+                                       <Label fx:id="life" prefHeight="17.0" prefWidth="50.0" text="Label" textFill="WHITE" />
+                                    </children>
+                                 </StackPane>
+                                      <StackPane prefHeight="55.0" prefWidth="15.0">
+                                          <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                                      </StackPane>
+                                      <StackPane prefHeight="55.0" prefWidth="19.0">
+                                          <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                                      </StackPane>
+                                      <StackPane prefHeight="55.0" prefWidth="18.0">
+                                          <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                                      </StackPane>
+                                      <StackPane prefHeight="55.0" prefWidth="17.0">
+                                          <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                                      </StackPane>
+                                      <StackPane prefHeight="55.0" prefWidth="16.0">
+                                          <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                                      </StackPane>
+                                  </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+                <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <VBox>
+               <children>
+                       <StackPane prefHeight="33.0" prefWidth="156.0">
+                           <Label prefHeight="17.0" prefWidth="91.0" text="Force" textFill="WHITE">
+                               <font>
+                                   <Font name="System Bold" size="12.0" />
+                               </font>
+                           </Label>
+                       </StackPane>
+                      <HBox prefHeight="30.0" prefWidth="192.0" spacing="5.0">
+                     <StackPane prefHeight="48.0" prefWidth="52.0">
+                           <Label fx:id="strength" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </StackPane>
+                          <StackPane prefHeight="55.0" prefWidth="95.0">
+                              <ProgressBar fx:id="strengthBar" prefWidth="200.0" progress="0.0" />
+                          </StackPane>
+                      </HBox>
+               </children>
+            </VBox>
+                <Separator orientation="VERTICAL" prefHeight="200.0" />
+                <HBox layoutX="316.0" layoutY="10.0" prefHeight="65.0" prefWidth="127.0" spacing="10.0">
+                    <StackPane prefHeight="55.0" prefWidth="49.0">
+                        <Label prefHeight="17.0" prefWidth="39.0" text="Gold" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                    </StackPane>
+                    <StackPane prefHeight="65.0" prefWidth="60.0">
+                        <Label fx:id="goldQuantity" prefHeight="17.0" prefWidth="67.0" textFill="WHITE" />
+                    </StackPane>
+                </HBox>
+                <Separator orientation="VERTICAL" prefHeight="65.0" prefWidth="18.0" />
+                <VBox prefHeight="55.0" prefWidth="194.0">
+                    <HBox prefHeight="18.0" prefWidth="201.0">
+                        <Label prefHeight="17.0" prefWidth="88.0" text="           Room" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="roomId" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="62.0" textFill="WHITE" />
+                    </HBox>
+                    <HBox prefHeight="49.0" prefWidth="172.0">
+                        <Rectangle fill="#bfc7ce" height="45.0" stroke="BLACK" strokeType="OUTSIDE" width="69.0">
+                            <HBox.margin>
+                                <Insets left="30.0" />
+                            </HBox.margin>
+                        </Rectangle>
+                        <Label fx:id="roomDirection" prefHeight="17.0" prefWidth="46.0" text="Label" textFill="WHITE">
+                            <HBox.margin>
+                                <Insets left="8.0" top="5.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                    </HBox>
+                </VBox>
+            </HBox>
+        </Pane>
+        <Pane fx:id="game" prefHeight="455.0" prefWidth="800.0" style="-fx-background-image: url('pictures/ground.png');">
+            <Polyline fx:id="left" layoutX="110.0" layoutY="111.0" points="-14.999992370605469, -111.00000762939453, -14.999992370605469, 74.0, -144.0, 248.66665649414062, -143.99998474121094, -111.0" smooth="false" strokeType="INSIDE">
+                <fill>
+                    <LinearGradient>
+                        <stops>
+                            <Stop>
+                                <color>
+                                    <Color />
+                                </color>
+                            </Stop>
+                            <Stop offset="1.0">
+                                <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                </color>
+                            </Stop>
+                        </stops>
+                    </LinearGradient>
+                </fill>
+            </Polyline>
+            <Rectangle fx:id="inFront" arcHeight="5.0" arcWidth="5.0" fill="#2c84d6" height="185.0" layoutX="95.0" stroke="BLACK" strokeType="INSIDE" width="588.0" />
+            <Polyline fx:id="right" layoutX="761.0" layoutY="111.0" points="39.0, -110.99999237060547, 39.0, 165.0, -78.0, 74.0, -78.0, -110.99998474121094" smooth="false" strokeType="INSIDE">
+                <fill>
+                    <LinearGradient>
+                        <stops>
+                            <Stop>
+                                <color>
+                                    <Color />
+                                </color>
+                            </Stop>
+                            <Stop offset="1.0">
+                                <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                </color>
+                            </Stop>
+                        </stops>
+                    </LinearGradient>
+                </fill>
+            </Polyline>
+            <Pane fx:id="door" layoutX="270.0" layoutY="-1.0" prefHeight="224.0" prefWidth="294.0">
+                <ImageView fx:id="doorPicture" fitHeight="185.0" fitWidth="294.0" layoutX="-1.0" layoutY="24.0" onMouseClicked="#createRoom" pickOnBounds="true" preserveRatio="true" />
+            </Pane>
+
+            <VBox fx:id="monster" layoutX="183.0" layoutY="54.0" prefHeight="415.0" prefWidth="410.0">
+                <ImageView fx:id="monsterImage" fitHeight="328.0" fitWidth="410.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="monsterDescription" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" prefHeight="27.0" prefWidth="410.0" text="Label">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+                <StackPane prefHeight="30.0" prefWidth="410.0">
+                    <Button fx:id="fightMonster" mnemonicParsing="false" onAction="#fight" prefHeight="25.0" prefWidth="184.0" style="-fx-background-color: black;" text="Combattre le monstre" textAlignment="CENTER" textFill="WHITE" />
+                </StackPane>
+            </VBox>
+            <Pane layoutX="101.0" layoutY="215.0" prefHeight="55.0" prefWidth="54.0">
+                <ImageView fx:id="item1" fitHeight="49.0" fitWidth="54.0" layoutX="1.0" layoutY="2.0" onMouseClicked="#collectItem" pickOnBounds="true" preserveRatio="true" />
+            </Pane>
+            <Pane layoutX="74.0" layoutY="328.0" prefHeight="55.0" prefWidth="54.0">
+                <ImageView fx:id="item2" fitHeight="49.0" fitWidth="54.0" layoutX="1.0" layoutY="2.0" onMouseClicked="#collectItem" pickOnBounds="true" preserveRatio="true" />
+            </Pane>
+            <Pane layoutX="621.0" layoutY="289.0" prefHeight="55.0" prefWidth="54.0">
+                <ImageView fx:id="item3" fitHeight="49.0" fitWidth="54.0" layoutX="1.0" layoutY="2.0" onMouseClicked="#collectItem" pickOnBounds="true" preserveRatio="true" />
+            </Pane>
+            <Pane layoutX="648.0" layoutY="196.0" prefHeight="55.0" prefWidth="54.0">
+                <ImageView fx:id="item4" fitHeight="49.0" fitWidth="54.0" layoutX="1.0" layoutY="2.0" onMouseClicked="#collectItem" pickOnBounds="true" preserveRatio="true" />
+            </Pane>
+        </Pane>
+        <Label fx:id="message" prefHeight="30.0" prefWidth="802.0" />
+    </VBox>
+</AnchorPane>

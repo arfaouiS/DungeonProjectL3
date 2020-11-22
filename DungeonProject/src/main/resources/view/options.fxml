@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.271" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OptionsController">
+    <children>
+        <VBox layoutX="249.0" layoutY="120.0" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Pane opacity="0.73" prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: brown;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="800.0" text="DONJON" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="31.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+                <Pane prefHeight="485.0" prefWidth="800.0" style="-fx-background-image: url('pictures/ground.png');">
+                    <children>
+                        <Polyline layoutX="110.0" layoutY="111.0" points="-14.999992370605469, -111.00000762939453, -14.999992370605469, 74.0, -144.0, 248.66665649414062, -143.99998474121094, -111.0" smooth="false" strokeType="INSIDE" style="-fx-fill: url('pictures/sideWall.png');">
+                            <fill>
+                                <LinearGradient endX="1.0" endY="1.0">
+                                    <stops>
+                                        <Stop>
+                                            <color>
+                                                <Color />
+                                            </color>
+                                        </Stop>
+                                        <Stop offset="1.0">
+                                            <color>
+                                                <Color red="1.0" green="1.0" blue="1.0" />
+                                            </color>
+                                        </Stop>
+                                    </stops>
+                                </LinearGradient>
+                            </fill></Polyline>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c84d6" height="185.0" layoutX="95.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: url('pictures/wall.png');" width="588.0" />
+                        <Polyline layoutX="761.0" layoutY="111.0" points="39.0, -110.99999237060547, 39.0, 165.0, -78.0, 74.0, -78.0, -110.99998474121094" smooth="false" strokeType="INSIDE" style="-fx-fill: url('pictures/sideWall.png');">
+                            <fill>
+                                <LinearGradient endX="1.0" endY="1.0">
+                                    <stops>
+                                        <Stop>
+                                            <color>
+                                                <Color />
+                                            </color>
+                                        </Stop>
+                                        <Stop offset="1.0">
+                                            <color>
+                                                <Color red="1.0" green="1.0" blue="1.0" />
+                                            </color>
+                                        </Stop>
+                                    </stops>
+                                </LinearGradient>
+                            </fill></Polyline>
+                  <Pane layoutX="464.0" layoutY="28.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="185.0" fitWidth="176.0" layoutX="18.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url('pictures/door1.png') ;" />
+                     </children>
+                  </Pane>
+                  <VBox layoutX="143.0" layoutY="243.0" prefHeight="200.0" prefWidth="297.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="304.0" text="Choisissez un joueur">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font></Label>
+                        <ChoiceBox fx:id="playersComboBox" prefHeight="25.0" prefWidth="241.0" />
+                        <Label prefHeight="17.0" prefWidth="327.0" text="Choisissez un système de combat">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="fightSystemComboBox" prefHeight="25.0" prefWidth="241.0" />
+                     </children></VBox>
+                  <Pane layoutX="433.0" layoutY="202.0" prefHeight="241.0" prefWidth="323.0">
+                     <children>
+                        <ImageView fitHeight="200.0" fitWidth="329.0" layoutX="-33.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url('pictures/players.png');" />
+                     </children>
+                  </Pane>
+                  <Button layoutX="198.0" layoutY="83.0" mnemonicParsing="false" onAction="#play" prefHeight="54.0" prefWidth="193.0" text="Jouer">
+                     <font>
+                        <Font name="Arial Black" size="25.0" />
+                     </font>
+                  </Button>
+                    </children></Pane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
