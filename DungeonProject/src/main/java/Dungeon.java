@@ -8,7 +8,6 @@ import java.io.IOException;
 
 public class Dungeon extends Application {
 
-    Stage primaryStage;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
