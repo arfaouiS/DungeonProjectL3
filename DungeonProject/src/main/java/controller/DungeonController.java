@@ -37,6 +37,7 @@ public class DungeonController implements Initializable {
     public Label message;
     public Pane game;
     public Rectangle inFront;
+    public Rectangle directionImage;
     public Polyline right;
     public Polyline left;
     public ImageView doorPicture;
@@ -126,7 +127,8 @@ public class DungeonController implements Initializable {
 
     public void displayDirectionRoom(DirectionRoom directionRoom) {
         roomDirection.setText(directionRoom.getDirection().toString());
-        this.doorPicture.setVisible(directionRoom.existDoor());
+        doorPicture.setVisible(directionRoom.existDoor());
+        directionImage.setFill(new ImagePattern(new Image(currentDirectionRoom.getDirection().getImagePath())));
 
         this.monsterVBox.setVisible(currentDirectionRoom.existMonster());
         if (currentDirectionRoom.existMonster()) {

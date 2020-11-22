@@ -9,12 +9,15 @@ public class Monster extends Character{
         this.imagePath = imagePath;
     }
 
-
     public String getImagePath() {
         return imagePath;
     }
 
     public String getDescription(){
         return name + ": Force = "  + strengthPoints + " Vies = " + lifePoints;
+    }
+
+    public Monster clone(){
+        return new Monster(this.name,this.imagePath,this.maxLifePoint,this.maxStrengthPoint);
     }
 }

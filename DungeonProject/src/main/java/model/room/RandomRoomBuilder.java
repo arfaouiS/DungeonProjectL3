@@ -39,7 +39,7 @@ public class RandomRoomBuilder implements RoomBuilder {
         Random random = new Random();
         for (DirectionRoom directionRoom : room.getEntireRoom()) {
             if (directionRoom.existDoor() && random.nextBoolean()) {
-                directionRoom.setMonster(allMonsters.get(random.nextInt(allMonsters.size())));
+                directionRoom.setMonster(allMonsters.get(random.nextInt(allMonsters.size())).clone());
             }
         }
     }

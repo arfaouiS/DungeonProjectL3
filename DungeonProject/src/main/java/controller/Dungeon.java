@@ -17,7 +17,7 @@ public class Dungeon extends Application {
 
     private static Monster dragon = new Monster("Dragon", "pictures/monster-dragon.png", 2, 60);
     private static Monster xorn = new Monster("Xorn", "pictures/xorn.png", 1, 100);
-    private static Monster mane = new Monster("Mane", "pictures/man.png", 3, 80);
+    private static Monster mane = new Monster("Mane", "pictures/mane.png", 3, 80);
 
     public static final List<Monster> monsters = Arrays.asList(dragon,xorn,mane);
     public static final List<Item> items = Arrays.asList(new LifePotion(), new Bomb(), new Gold(), new Weapon());
