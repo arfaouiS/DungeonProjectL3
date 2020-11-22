@@ -8,8 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
-import model.character.Human;
-import model.character.Magician;
 import model.character.Player;
 import model.fight.FightSystem;
 import model.fight.ImmediateFight;
@@ -26,7 +24,7 @@ public class OptionsController implements Initializable {
     public ChoiceBox<String> playersComboBox;
     public ChoiceBox<String> fightSystemComboBox;
 
-    List<Player> players = Arrays.asList(new Magician(), new Human());
+    List<Player> players = Arrays.asList(new Player("Magician", 5, 150));
     List<FightSystem> fightSystems = Arrays.asList(new ImmediateFight(),new TurnBasedFight());
 
     @Override

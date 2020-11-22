@@ -6,22 +6,16 @@ import model.fight.FightSystem;
 import model.item.*;
 import model.room.Room;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Dungeon {
 
     private final Player player;
     private final FightSystem fightSystem;
     private Room currentRoom;
-    private List<Room> visitedRooms;
 
     public Dungeon(Room currentRoom, Player player, FightSystem fightSystem) {
         this.player = player;
         this.currentRoom = currentRoom;
         this.fightSystem = fightSystem;
-        this.visitedRooms = new ArrayList<>();
-        visitedRooms.add(currentRoom);
     }
 
     public Room getCurrentRoom() {
@@ -35,7 +29,6 @@ public class Dungeon {
 
     public void enterIn(Room room){
         this.currentRoom = room;
-        this.visitedRooms.add(currentRoom);
     }
 
     public Message playerCollect(Item renderedItem){
@@ -44,7 +37,7 @@ public class Dungeon {
     }
 
     public void playerFight(Monster monster){
-        fightSystem.fight(player,monster);
+        fightSystem.fight(player, monster);
     }
 
 

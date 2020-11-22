@@ -8,7 +8,7 @@ public class DirectionRoom {
 
     private final Direction direction;
     public Item[] items;
-    public Monster monster;
+    private Monster monster;
     private boolean existDoor;
 
 
@@ -19,6 +19,14 @@ public class DirectionRoom {
         this.existDoor = false;
     }
 
+    public void setMonster(Monster monster) {
+        this.monster = monster;
+    }
+
+    public Monster getMonster() {
+        return monster;
+    }
+
     public void setExistDoor(boolean existDoor){
         this.existDoor = existDoor;
     }
@@ -27,6 +35,7 @@ public class DirectionRoom {
         return existDoor;
     }
 
+    // TODO : verifier cette méthode
     public boolean existMonster(){
         return (this.monster != null && monster.isAlive());
     }
@@ -35,17 +44,19 @@ public class DirectionRoom {
         return items[index] != null;
     }
 
-    public boolean deleteItem(Item item){
+    public void deleteItem(Item item){
         for(int index = 0; index<items.length; index++) {
             if (existItem(index) && items[index].equals(item)) {
                 items[index] = null;
-                return true;
             }
         }
-        return false;
     }
 
     public Direction getDirection() {
         return direction;
+    }
+
+    public void printRoom(){
+        System.out.println(direction.toString() + this + ": \n\tDoor=" + existDoor + "\n\tMonster=" + monster);
     }
 }

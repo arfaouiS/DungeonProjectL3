@@ -38,8 +38,9 @@ public class RandomRoomBuilder implements RoomBuilder {
         //TODO: Problème avec la génération de monstre
         Random random = new Random();
         for (DirectionRoom directionRoom : room.getEntireRoom()) {
-            if (directionRoom.existDoor() && random.nextBoolean())
-                directionRoom.monster = allMonsters.get(random.nextInt(allMonsters.size()));
+            if (directionRoom.existDoor() && random.nextBoolean()) {
+                directionRoom.setMonster(allMonsters.get(random.nextInt(allMonsters.size())));
+            }
         }
     }
 }

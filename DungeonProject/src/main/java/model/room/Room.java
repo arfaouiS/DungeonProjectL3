@@ -14,8 +14,8 @@ public class Room {
     private  DirectionRoom north = new DirectionRoom(Direction.NORTH);
     private  DirectionRoom south = new DirectionRoom(Direction.SOUTH);
     private  DirectionRoom west = new DirectionRoom(Direction.WEST);
-    private  DirectionRoom est = new DirectionRoom(Direction.EAST);
-    private  List<DirectionRoom> entireRoom = Arrays.asList(north, south, west, est);
+    private  DirectionRoom east = new DirectionRoom(Direction.EAST);
+    private  List<DirectionRoom> entireRoom = Arrays.asList(north, south, west, east);
 
 
     public Room(RoomBuilder roomBuilder, List<Item> items, List<Monster> monsters) {
@@ -34,7 +34,7 @@ public class Room {
             case NORTH: return north;
             case SOUTH: return south;
             case WEST: return west;
-            case EAST: return est;
+            case EAST: return east;
         }
         return null;
     }
@@ -43,11 +43,6 @@ public class Room {
         return id;
     }
 
-    public boolean existMonsterAlive(){
-        for(DirectionRoom directionRoom: entireRoom){
-            if(directionRoom.existMonster()) return true;
-        }
-        return false;
-    }
+
 
 }

@@ -2,7 +2,6 @@ package controller;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.value.ObservableDoubleValue;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -35,14 +34,6 @@ import java.util.*;
 
 public class DungeonController implements Initializable {
 
-    // TODO: Gérer les vies et la force
-    // TODO: Mauvaise valeur de force après combat
-// TODO: ne pas retourner en arrière porte sud fermée
-// TODO: récupérer des objets
-// TODO: Inventaire d'objets
-// TODO: système de fight
-
-
     public Label message;
     public Pane game;
     public Rectangle inFront;
@@ -51,11 +42,10 @@ public class DungeonController implements Initializable {
     public ImageView doorPicture;
     public ImageView monsterImage;
     public Label monsterDescription;
-    public VBox monster;
+    public VBox monsterVBox;
     public Pane door;
-    public Button fightMonster;
+    public Button fightButton;
     public ImageView item1, item2, item3, item4;
-    List<ImageView> itemsView = Arrays.asList(item1, item2, item3, item4);
     public Label goldQuantity;
     public Label roomId;
     public Label roomDirection;
@@ -65,9 +55,6 @@ public class DungeonController implements Initializable {
     public HBox lifeBox;
     public Label life;
     public static int MAX_LIFE_POINTS = 5;
-
-    public List<Monster> monsters = Arrays.asList(new Dragon(), new Xorn());
-    public List<Item> items = Arrays.asList(new LifePotion(), new Bomb(), new Gold(), new Weapon());
 
     Player player;
     FightSystem fightSystem;
@@ -81,7 +68,7 @@ public class DungeonController implements Initializable {
     }
 
     public void setUpGame(Player player, FightSystem fightSystem) {
-        Room room = new Room(new RandomRoomBuilder(), items, monsters);
+        Room room = new Room(new RandomRoomBuilder(), controller.Dungeon.items, controller.Dungeon.monsters);
         this.player = player;
         this.fightSystem = fightSystem;
         this.dungeon = new Dungeon(room, player, fightSystem);
@@ -102,17 +89,17 @@ public class DungeonController implements Initializable {
 
     public void displayStrength() {
         int playerStrength = dungeon.getPlayer().getStrengthPoints();
-        int totalStrength = dungeon.getPlayer().totalStrengthPoints();
-        strength.setText(playerStrength + "/" + totalStrength);
+        int maxStrength = dungeon.getPlayer().getMaxStrengthPoint();
+        strength.setText(playerStrength + "/" + maxStrength);
         strengthBar.setStyle("-fx-accent: black;");
         DoubleProperty dp = new SimpleDoubleProperty();
-        dp.setValue((double) playerStrength / totalStrength);
+        dp.setValue((double) playerStrength / maxStrength);
         strengthBar.progressProperty().bind(dp);
     }
 
 
     public void displayLives() {
-        life.setText(player.getLifePoints() + "/" + player.totalLifePoints());
+        life.setText(player.getLifePoints() + "/" + player.getMaxLifePoint());
         for(int index = 0 ; index <= player.getLifePoints(); index++){
             lifeBox.getChildren().get(index).setVisible(true);
         }
@@ -134,51 +121,22 @@ public class DungeonController implements Initializable {
         left.setFill(new ImagePattern(sideWall));
         this.doorPicture.setImage(door);
 
-        displayDirectionRoom(dungeon.getCurrentRoom().getDirectionRoom(Direction.NORTH));
+        displayDirectionRoom(currentDirectionRoom);
     }
 
     public void displayDirectionRoom(DirectionRoom directionRoom) {
         roomDirection.setText(directionRoom.getDirection().toString());
         this.doorPicture.setVisible(directionRoom.existDoor());
 
-        this.monster.setVisible(directionRoom.existMonster());
-        if (directionRoom.existMonster()) {
-            this.monsterImage.setImage(new Image(directionRoom.monster.getImagePath()));
-            this.monsterDescription.setText(directionRoom.monster.getDescription());
+        this.monsterVBox.setVisible(currentDirectionRoom.existMonster());
+        if (currentDirectionRoom.existMonster()) {
+            Monster monster = directionRoom.getMonster();
+            this.monsterImage.setImage(new Image(monster.getImagePath()));
+            this.monsterDescription.setText(monster.getDescription());
         }
-
         displayItems(directionRoom);
     }
 
-    private void affectItemsToLocalisation() {
-        for (DirectionRoom directionRoom : dungeon.getCurrentRoom().getEntireRoom()) {
-            itemLocalisation.put(directionRoom, new HashMap<>());
-            List<ImageView> itemsPicture = Arrays.asList(item1, item2, item3, item4);
-            Collections.shuffle(itemsPicture);
-            for (int index = 0; index < 4; index++) {
-                if (directionRoom.existItem(index)) {
-                    itemLocalisation.get(directionRoom).put(itemsPicture.get(index), directionRoom.items[index]);
-                }
-            }
-        }
-    }
-
-    private void testDisplayItems(DirectionRoom directionRoom) {
-        Map<ImageView, Item> itemAffectation = itemLocalisation.get(directionRoom);
-        System.out.println(itemAffectation.toString());
-        for (Map.Entry<ImageView, Item> localisation : itemAffectation.entrySet()) {
-            System.out.println(localisation.toString() + "\n");
-            for (ImageView itemView : itemsView) {
-                //if(localisation.getKey() == null)
-                //   System.out.println("voila");
-                //if (localisation.getKey().equals(itemView.toString())) {
-                //itemView.setImage(new Image(localisation.getValue().getPicturePath()));
-                //itemView.setVisible(true);
-                //} else{}
-                //itemView.setVisible(false);
-            }
-        }
-    }
 
     public void displayItems(DirectionRoom directionRoom) {
         itemLocalisation.put(directionRoom, new HashMap<>());
@@ -199,27 +157,31 @@ public class DungeonController implements Initializable {
     public void playerMove(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case UP:
-                displayDirectionRoom(dungeon.getCurrentRoom().getDirectionRoom(Direction.NORTH));
                 currentDirectionRoom = (dungeon.getCurrentRoom().getDirectionRoom(Direction.NORTH));
+                displayDirectionRoom(currentDirectionRoom);
                 break;
             case DOWN:
-                displayDirectionRoom(dungeon.getCurrentRoom().getDirectionRoom(Direction.SOUTH));
                 currentDirectionRoom = (dungeon.getCurrentRoom().getDirectionRoom(Direction.SOUTH));
+                displayDirectionRoom(currentDirectionRoom);
                 break;
             case LEFT:
-                displayDirectionRoom(dungeon.getCurrentRoom().getDirectionRoom(Direction.WEST));
                 currentDirectionRoom = (dungeon.getCurrentRoom().getDirectionRoom(Direction.WEST));
+                displayDirectionRoom(currentDirectionRoom);
                 break;
             case RIGHT:
-                displayDirectionRoom(dungeon.getCurrentRoom().getDirectionRoom(Direction.EAST));
                 currentDirectionRoom = (dungeon.getCurrentRoom().getDirectionRoom(Direction.EAST));
+                displayDirectionRoom(currentDirectionRoom);
                 break;
         }
     }
 
     public void createRoom() {
-        Room newRoom = new Room(new RandomRoomBuilder(), items, monsters);
+        Room newRoom = new Room(new RandomRoomBuilder(), controller.Dungeon.items, controller.Dungeon.monsters);
         dungeon.enterIn(newRoom);
+        for(Monster monster: controller.Dungeon.monsters){
+            monster.setStrengthPoints(monster.getMaxStrengthPoint());
+            monster.setLifePoints(monster.getMaxLifePoint());
+        }
         displayRoom();
     }
 
@@ -245,19 +207,6 @@ public class DungeonController implements Initializable {
     }
 
     public void collectItem(MouseEvent mouseEvent) {
-
-        /*
-        for (Map.Entry<DirectionRoom, Map<ImageView, Item>> mapentry : itemLocalisation.entrySet()) {
-            System.out.println("Direction: " + mapentry.getKey().getDirection().toString());
-            for (Map.Entry<ImageView, Item> map : mapentry.getValue().entrySet()) {
-                System.out.println("clé: " + map.getKey()
-                        + " | valeur: " + map.getValue());
-            }
-            System.out.println("\n\n");
-
-        }
-         */
-
         ImageView itemView = (ImageView) mouseEvent.getSource();
         Item item = itemLocalisation.get(currentDirectionRoom).get(itemView);
         currentDirectionRoom.deleteItem(item);
@@ -272,7 +221,7 @@ public class DungeonController implements Initializable {
     }
 
     public void fight() {
-        dungeon.playerFight(currentDirectionRoom.monster);
+        dungeon.playerFight(currentDirectionRoom.getMonster());
         displayDirectionRoom(currentDirectionRoom);
         displayStrength();
         displayLives();
