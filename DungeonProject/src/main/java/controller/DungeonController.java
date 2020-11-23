@@ -2,8 +2,10 @@ package controller;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -228,11 +230,52 @@ public class DungeonController implements Initializable {
 
     }
 
-    public void fight() {
+    public void fight(ActionEvent event) {
         displayMessage(dungeon.playerFight(currentDirectionRoom.getMonster()));
         displayDirectionRoom(currentDirectionRoom);
         displayStrength();
         displayLives();
+        if (!player.isAlive())
+            gameOver(event);
+    }
+
+    public void displaySettings(ActionEvent event){
+        try {
+            player.setLifePoints(player.getMaxLifePoint());
+            player.setStrengthPoints(player.getMaxStrengthPoint());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/options.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void gameOver(ActionEvent event) {
+        VBox vBox = new VBox();
+        vBox.spacingProperty().setValue(10);
+        Label gameOverLabel = new Label("Vous avez perdu");
+        gameOverLabel.setStyle("-fx-font-weight: bold;");
+        Button tryAgainButton = new Button("Rejouer");
+
+        StackPane spLabel = new StackPane();
+        StackPane spButton = new StackPane();
+        spLabel.getChildren().add(gameOverLabel);
+        spButton.getChildren().add(tryAgainButton);
+        vBox.getChildren().add(spLabel);
+        vBox.getChildren().add(spButton);
+
+        Scene secondScene = new Scene(vBox, 230, 100);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setX(window.getX() + 300);
+        window.setY(window.getY() + 200);
+        window.setScene(secondScene);
+        window.show();
+
+        tryAgainButton.setOnAction(actionEvent -> displaySettings(actionEvent));
     }
 }
 
