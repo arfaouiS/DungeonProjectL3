@@ -204,11 +204,10 @@ public class DungeonController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/bag.fxml"));
             Parent root = loader.load();
-
             BagContentController bagContentController = loader.getController();
+            bagContentController.dungeonController = this;
             bagContentController.player = player;
             bagContentController.displayItems();
-
             Stage newWindow = new Stage();
             newWindow.setScene(new Scene(root));
             newWindow.initModality(Modality.WINDOW_MODAL);

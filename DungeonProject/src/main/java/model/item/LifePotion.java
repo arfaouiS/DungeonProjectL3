@@ -23,6 +23,6 @@ public class LifePotion implements Item {
     @Override
     public void usedBy(Player player) {
         int lifePoints = player.getLifePoints();
-        player.setLifePoints(lifePoints + 1);
+        player.setLifePoints(Math.min(lifePoints + 1,player.getMaxLifePoint()));
     }
 }

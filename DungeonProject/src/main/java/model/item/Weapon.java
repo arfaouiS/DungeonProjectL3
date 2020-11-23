@@ -7,7 +7,7 @@ public class Weapon implements Item {
     @Override
     public void usedBy(Player player) {
         int strengthPoints = player.getStrengthPoints();
-        player.setStrengthPoints(strengthPoints + 10);
+        player.setStrengthPoints(Math.min(strengthPoints + 10,player.getMaxStrengthPoint()));
     }
 
     @Override

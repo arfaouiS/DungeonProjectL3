@@ -32,12 +32,8 @@ public class Player extends Character{
         return bag;
     }
 
-    public boolean removeFromBag(Item renderedItem) {
-        if(bag.contains(renderedItem)){
-            bag.remove(renderedItem);
-            return true;
-        }
-        return false;
+    public void removeFromBag(int itemIndex) {
+        bag.remove(itemIndex);
     }
 
 

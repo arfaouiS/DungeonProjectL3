@@ -23,6 +23,6 @@ public class Bomb implements Item {
     @Override
     public void usedBy(Player player) {
         int strengthPoints = player.getStrengthPoints();
-        player.setStrengthPoints(strengthPoints + 30);
+        player.setStrengthPoints(Math.min(strengthPoints + 30,player.getMaxStrengthPoint()));
     }
 }

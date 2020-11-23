@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.BagContentController">
-   <VBox alignment="TOP_RIGHT" layoutX="145.0" layoutY="45.0" prefHeight="400.0" prefWidth="600.0"
-         AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-         AnchorPane.topAnchor="0.0">
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="609.0" text="Inventaire"
-             textAlignment="CENTER">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.BagContentController">
+   <VBox alignment="TOP_RIGHT" layoutX="145.0" layoutY="45.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="76.0" prefWidth="600.0" text="Inventaire" textAlignment="CENTER">
          <font>
-            <Font name="System Bold" size="22.0"/>
+            <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <ListView fx:id="items" prefHeight="734.0" prefWidth="600.0"/>
+      <Separator prefHeight="0.0" prefWidth="600.0">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Separator>
+      <Label prefHeight="17.0" prefWidth="607.0" text="Selectionnez un objet puis appuyer sur le bouton pour l'utiliser ">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Label>
+      <ListView fx:id="items" prefHeight="326.0" prefWidth="600.0" />
+      <Button fx:id="useItemButton" mnemonicParsing="false" onAction="#useItem" prefHeight="25.0" prefWidth="121.0" text="Utiliser" />
    </VBox>
 </AnchorPane>
