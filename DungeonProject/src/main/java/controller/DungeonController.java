@@ -40,10 +40,7 @@ public class DungeonController implements Initializable {
 
     public TextArea message;
     public Pane game;
-    public Rectangle inFront;
     public Rectangle directionImage;
-    public Polyline right;
-    public Polyline left;
     public ImageView doorPicture;
     public ImageView monsterImage;
     public Label monsterDescription;
@@ -73,11 +70,7 @@ public class DungeonController implements Initializable {
     }
 
     public void setUpGame(Player player, FightSystem fightSystem) {
-        message.setPromptText("Appuyez sur les fleches du clavier pour vous deplacer dans la salle. " +
-                "\nVous ne pouvez pas entrer dans une autre salle si un monstre se trouve devant la porte : " +
-                "\nIl faut alors combattre le monstre. " +
-                "\nPour entrer dans une salle il suffit d'appuyer sur la porte");
-        Room room = new Room(new RandomRoomBuilder(), Game.items, Game.monsters);
+        Room room = new Room(new RandomRoomBuilder(), OptionsController.items, OptionsController.monsters);
         this.player = player;
         this.fightSystem = fightSystem;
         this.dungeon = new Dungeon(room, player, fightSystem);
@@ -120,20 +113,11 @@ public class DungeonController implements Initializable {
     public void displayRoom() {
         roomId.setText(String.valueOf(dungeon.getCurrentRoom().getId()));
         currentDirectionRoom = (dungeon.getCurrentRoom().getDirectionRoom(Direction.NORTH));
-
-        Image wall = new Image("pictures/wall.png");
-        Image sideWall = new Image("pictures/sideWall.png");
-        Image door = new Image("pictures/door1.png");
-
-        inFront.setFill(new ImagePattern(wall));
-        right.setFill(new ImagePattern(sideWall));
-        left.setFill(new ImagePattern(sideWall));
-        this.doorPicture.setImage(door);
-
         displayDirectionRoom(currentDirectionRoom);
     }
 
     public void displayDirectionRoom(DirectionRoom directionRoom) {
+        currentDirectionRoom = directionRoom;
         roomDirection.setText(directionRoom.getDirection().toString());
         doorPicture.setVisible(directionRoom.existDoor());
         directionImage.setFill(new ImagePattern(new Image(currentDirectionRoom.getDirection().getImagePath())));
@@ -167,20 +151,16 @@ public class DungeonController implements Initializable {
     public void playerMove(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case UP:
-                currentDirectionRoom = (dungeon.getCurrentRoom().getDirectionRoom(Direction.NORTH));
-                displayDirectionRoom(currentDirectionRoom);
+                displayDirectionRoom(dungeon.getCurrentRoom().getDirectionRoom(Direction.NORTH));
                 break;
             case DOWN:
-                currentDirectionRoom = (dungeon.getCurrentRoom().getDirectionRoom(Direction.SOUTH));
-                displayDirectionRoom(currentDirectionRoom);
+                displayDirectionRoom(dungeon.getCurrentRoom().getDirectionRoom(Direction.SOUTH));
                 break;
             case LEFT:
-                currentDirectionRoom = (dungeon.getCurrentRoom().getDirectionRoom(Direction.WEST));
-                displayDirectionRoom(currentDirectionRoom);
+                displayDirectionRoom(dungeon.getCurrentRoom().getDirectionRoom(Direction.WEST));
                 break;
             case RIGHT:
-                currentDirectionRoom = (dungeon.getCurrentRoom().getDirectionRoom(Direction.EAST));
-                displayDirectionRoom(currentDirectionRoom);
+                displayDirectionRoom(dungeon.getCurrentRoom().getDirectionRoom(Direction.EAST));
                 break;
         }
     }
@@ -190,9 +170,9 @@ public class DungeonController implements Initializable {
     }
 
     public void createRoom() {
-        Room newRoom = new Room(new RandomRoomBuilder(), Game.items, Game.monsters);
+        Room newRoom = new Room(new RandomRoomBuilder(), OptionsController.items, OptionsController.monsters);
         displayMessage(dungeon.enterIn(newRoom));
-        for(Monster monster: Game.monsters){
+        for(Monster monster: OptionsController.monsters){
             monster.setStrengthPoints(monster.getMaxStrengthPoint());
             monster.setLifePoints(monster.getMaxLifePoint());
         }

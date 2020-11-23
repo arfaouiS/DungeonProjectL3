@@ -33,12 +33,14 @@ public class BagContentController  implements Initializable {
 
 
     public void useItem() {
-        int itemIndex = items.getSelectionModel().getSelectedIndex();
-        items.getItems().remove(itemIndex);
-        Item item = player.getBagContent().get(itemIndex);
-        player.removeFromBag(itemIndex);
-        item.usedBy(player);
-        dungeonController.displayStrength();
-        dungeonController.displayLives();
+        if(items.getSelectionModel().getSelectedIndices().size() > 0) {
+            int itemIndex = items.getSelectionModel().getSelectedIndex();
+            items.getItems().remove(itemIndex);
+            Item item = player.getBagContent().get(itemIndex);
+            player.removeFromBag(itemIndex);
+            item.usedBy(player);
+            dungeonController.displayStrength();
+            dungeonController.displayLives();
+        }
     }
 }

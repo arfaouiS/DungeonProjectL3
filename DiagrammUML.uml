@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>model.character</OriginalElement>
+  <nodes>
+    <node x="1639.1621438133484" y="1680.5">model.fight.PlayerAttackFirst</node>
+    <node x="331.035714285714" y="1271.0">model.room.Room</node>
+    <node x="103.19964381334842" y="637.5">model.character.Monster</node>
+    <node x="1500.0371438133484" y="1349.5">model.fight.FightSystem</node>
+    <node x="393.4037698412692" y="1923.0">model.room.RandomRoomBuilder</node>
+    <node x="1019.4815882577934" y="315.0">model.character.Player</node>
+    <node x="779.4894721744115" y="638.0">model.item.Item</node>
+    <node x="236.45658825779333" y="1669.5">model.room.RoomBuilder</node>
+    <node x="335.1996438133484" y="571.0">model.game.Direction</node>
+    <node x="1291.7871438133484" y="993.0">model.item.LifePotion</node>
+    <node x="1118.7871438133484" y="993.0">model.item.Weapon</node>
+    <node x="677.7394721744115" y="993.0">model.item.Gold</node>
+    <node x="1066.9815882577934" y="0.0">model.character.Character</node>
+    <node x="1128.6746031746025" y="1624.0">model.game.Dungeon</node>
+    <node x="8.100198412697864" y="1923.0">model.room.ExitRoomBuilder</node>
+    <node x="944.7871438133484" y="993.0">model.item.Bomb</node>
+    <node x="469.73947217441156" y="926.0">model.room.DirectionRoom</node>
+    <node x="1690.2315882577934" y="992.5">model.game.Message</node>
+    <node x="1897.1621438133484" y="1680.5">model.fight.MonsterAttackFirst</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="model.room.ExitRoomBuilder" target="model.room.RoomBuilder">
+      <point x="24.583333333333485" y="-49.0" />
+      <point x="180.18353174603135" y="1863.0" />
+      <point x="310.2065882577933" y="1863.0" />
+      <point x="-73.75" y="49.0" />
+    </edge>
+    <edge source="model.character.Player" target="model.item.Item">
+      <point x="-20.444444444444343" y="83.0" />
+      <point x="1091.037143813349" y="531.0" />
+      <point x="906.9894721744115" y="531.0" />
+      <point x="51.0" y="-60.5" />
+    </edge>
+    <edge source="model.fight.PlayerAttackFirst" target="model.character.Character">
+      <point x="89.25" y="-38.0" />
+      <point x="1847.4121438133484" y="1604.0" />
+      <point x="1997.0144721744114" y="1604.0" />
+      <point x="1997.0144721744114" y="285.0" />
+      <point x="1209.1958739720792" y="285.0" />
+      <point x="51.71428571428578" y="127.5" />
+    </edge>
+    <edge source="model.room.Room" target="model.room.RoomBuilder">
+      <point x="-25.75" y="116.5" />
+      <point x="459.785714285714" y="1604.0" />
+      <point x="420.8315882577933" y="1604.0" />
+      <point x="36.875" y="-49.0" />
+    </edge>
+    <edge source="model.fight.MonsterAttackFirst" target="model.character.Character">
+      <point x="89.25" y="-38.0" />
+      <point x="2105.4121438133484" y="1574.0" />
+      <point x="2019.4121438133484" y="1574.0" />
+      <point x="2019.4121438133484" y="275.0" />
+      <point x="1235.0530168292219" y="275.0" />
+      <point x="77.57142857142844" y="127.5" />
+    </edge>
+    <edge source="model.fight.PlayerAttackFirst" target="model.game.Message">
+      <point x="29.75" y="-38.0" />
+      <point x="1787.9121438133484" y="1604.0" />
+      <point x="1759.5371438133484" y="1604.0" />
+      <point x="1759.5371438133484" y="1251.0" />
+      <point x="1816.2315882577934" y="1251.0" />
+      <point x="28.0" y="61.0" />
+    </edge>
+    <edge source="model.character.Monster" target="model.character.Character">
+      <point x="-53.0" y="-61.0" />
+      <point x="156.19964381334842" y="275.0" />
+      <point x="1079.9101596863648" y="275.0" />
+      <point x="-77.57142857142856" y="127.5" />
+    </edge>
+    <edge source="model.room.RoomBuilder" target="model.character.Monster">
+      <point x="-110.625" y="-49.0" />
+      <point x="273.3315882577933" y="1574.0" />
+      <point x="107.97519841269786" y="1574.0" />
+      <point x="107.97519841269786" y="896.0" />
+      <point x="178.9139295276342" y="896.0" />
+      <point x="-30.28571428571422" y="61.0" />
+    </edge>
+    <edge source="model.fight.FightSystem" target="model.game.Message">
+      <point x="59.5" y="-38.0" />
+      <point x="1678.5371438133484" y="1231.0" />
+      <point x="1760.2315882577934" y="1231.0" />
+      <point x="-28.0" y="61.0" />
+    </edge>
+    <edge source="model.room.Room" target="model.game.Direction">
+      <point x="-88.28571428571422" y="-116.5" />
+      <point x="397.2499999999998" y="1251.0" />
+      <point x="405.6996438133484" y="1251.0" />
+      <point x="405.6996438133484" y="906.0" />
+      <point x="425.1996438133484" y="906.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="model.room.Room" target="model.item.Item">
+      <point x="132.42857142857156" y="-116.5" />
+      <point x="617.9642857142856" y="1251.0" />
+      <point x="841.2394721744115" y="1251.0" />
+      <point x="841.2394721744115" y="906.0" />
+      <point x="836.8644721744115" y="906.0" />
+      <point x="-19.125" y="60.5" />
+    </edge>
+    <edge source="model.room.RoomBuilder" target="model.room.Room">
+      <point x="-36.875" y="-49.0" />
+      <point x="347.0815882577933" y="1604.0" />
+      <point x="408.285714285714" y="1604.0" />
+      <point x="-77.25" y="116.5" />
+    </edge>
+    <edge source="model.fight.FightSystem" target="model.character.Character">
+      <point x="-59.5" y="-38.0" />
+      <point x="1559.5371438133484" y="1201.0" />
+      <point x="1541.3894721744116" y="1201.0" />
+      <point x="1541.3894721744116" y="295.0" />
+      <point x="1183.3387311149363" y="295.0" />
+      <point x="25.85714285714289" y="127.5" />
+    </edge>
+    <edge source="model.item.Bomb" target="model.character.Player">
+      <point x="38.25" y="-60.5" />
+      <point x="1059.5371438133484" y="541.0" />
+      <point x="1111.4815882577934" y="541.0" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="model.game.Dungeon" target="model.fight.FightSystem">
+      <point x="111.60000000000002" y="-94.5" />
+      <point x="1364.2746031746024" y="1604.0" />
+      <point x="1589.2871438133484" y="1604.0" />
+      <point x="-29.75" y="38.0" />
+    </edge>
+    <edge source="model.room.RoomBuilder" target="model.item.Item">
+      <point x="110.625" y="-49.0" />
+      <point x="494.5815882577933" y="1604.0" />
+      <point x="852.2394721744115" y="1604.0" />
+      <point x="852.2394721744115" y="906.0" />
+      <point x="849.6144721744115" y="906.0" />
+      <point x="-6.375" y="60.5" />
+    </edge>
+    <edge source="model.item.Gold" target="model.item.Item">
+      <point x="38.25" y="-60.5" />
+      <point x="792.4894721744115" y="906.0" />
+      <point x="824.1144721744115" y="906.0" />
+      <point x="-31.875" y="60.5" />
+    </edge>
+    <edge source="model.item.LifePotion" target="model.character.Player">
+      <point x="38.25" y="-60.5" />
+      <point x="1406.5371438133484" y="541.0" />
+      <point x="1172.8149215911267" y="541.0" />
+      <point x="61.33333333333326" y="83.0" />
+    </edge>
+    <edge source="model.room.RandomRoomBuilder" target="model.room.RoomBuilder">
+      <point x="-24.583333333333258" y="-49.0" />
+      <point x="516.3204365079359" y="1833.0" />
+      <point x="457.7065882577933" y="1833.0" />
+      <point x="73.75" y="49.0" />
+    </edge>
+    <edge source="model.room.ExitRoomBuilder" target="model.character.Monster">
+      <point x="-122.91666666666652" y="-49.0" />
+      <point x="32.68353174603135" y="1903.0" />
+      <point x="0.0" y="1903.0" />
+      <point x="0.0" y="876.0" />
+      <point x="118.34250095620553" y="876.0" />
+      <point x="-90.85714285714289" y="61.0" />
+    </edge>
+    <edge source="model.room.ExitRoomBuilder" target="model.room.Room">
+      <point x="-24.583333333333485" y="-49.0" />
+      <point x="131.01686507936438" y="1883.0" />
+      <point x="22.0" y="1883.0" />
+      <point x="22.0" y="1594.0" />
+      <point x="356.785714285714" y="1594.0" />
+      <point x="-128.75" y="116.5" />
+    </edge>
+    <edge source="model.room.Room" target="model.character.Monster">
+      <point x="-132.42857142857133" y="-116.5" />
+      <point x="353.10714285714266" y="1251.0" />
+      <point x="329.73054360298306" y="1251.0" />
+      <point x="329.73054360298306" y="886.0" />
+      <point x="239.48535809906264" y="886.0" />
+      <point x="30.28571428571422" y="61.0" />
+    </edge>
+    <edge source="model.room.ExitRoomBuilder" target="model.item.Item">
+      <point x="122.91666666666652" y="-49.0" />
+      <point x="278.5168650793644" y="1893.0" />
+      <point x="863.2394721744115" y="1893.0" />
+      <point x="6.375" y="60.5" />
+    </edge>
+    <edge source="model.fight.PlayerAttackFirst" target="model.fight.FightSystem">
+      <point x="-89.25" y="-38.0" />
+      <point x="1668.9121438133484" y="1604.0" />
+      <point x="1648.7871438133484" y="1604.0" />
+      <point x="29.75" y="38.0" />
+    </edge>
+    <edge source="model.item.Weapon" target="model.character.Player">
+      <point x="38.25" y="-60.5" />
+      <point x="1233.5371438133484" y="551.0" />
+      <point x="1152.3704771466823" y="551.0" />
+      <point x="40.888888888888914" y="83.0" />
+    </edge>
+    <edge source="model.room.DirectionRoom" target="model.character.Monster">
+      <point x="-53.71428571428578" y="-127.5" />
+      <point x="510.0251864601258" y="866.0" />
+      <point x="300.0567866704911" y="866.0" />
+      <point x="90.85714285714266" y="61.0" />
+    </edge>
+    <edge source="model.room.RandomRoomBuilder" target="model.room.Room">
+      <point x="24.583333333333258" y="-49.0" />
+      <point x="565.4871031746025" y="1863.0" />
+      <point x="541.9565882577933" y="1863.0" />
+      <point x="541.9565882577933" y="1594.0" />
+      <point x="511.285714285714" y="1594.0" />
+      <point x="25.75" y="116.5" />
+    </edge>
+    <edge source="model.room.RandomRoomBuilder" target="model.character.Monster">
+      <point x="-122.91666666666674" y="-49.0" />
+      <point x="417.98710317460245" y="1853.0" />
+      <point x="96.97519841269786" y="1853.0" />
+      <point x="96.97519841269786" y="886.0" />
+      <point x="148.62821524191975" y="886.0" />
+      <point x="-60.57142857142867" y="61.0" />
+    </edge>
+    <edge source="model.game.Dungeon" target="model.room.Room">
+      <point x="-62.0" y="-94.5" />
+      <point x="1190.6746031746025" y="1544.0" />
+      <point x="614.285714285714" y="1544.0" />
+      <point x="128.75" y="116.5" />
+    </edge>
+    <edge source="model.room.Room" target="model.room.DirectionRoom">
+      <point x="88.28571428571422" y="-116.5" />
+      <point x="573.8214285714282" y="1251.0" />
+      <point x="579.4061388410782" y="1251.0" />
+      <point x="15.666666666666742" y="127.5" />
+    </edge>
+    <edge source="model.room.RandomRoomBuilder" target="model.game.Direction">
+      <point x="-73.75" y="-49.0" />
+      <point x="467.1537698412692" y="1843.0" />
+      <point x="225.95658825779333" y="1843.0" />
+      <point x="225.95658825779333" y="906.0" />
+      <point x="389.1996438133484" y="906.0" />
+      <point x="-36.0" y="127.5" />
+    </edge>
+    <edge source="model.room.RandomRoomBuilder" target="model.item.Item">
+      <point x="122.91666666666674" y="-49.0" />
+      <point x="663.8204365079359" y="1903.0" />
+      <point x="894.1746031746025" y="1903.0" />
+      <point x="894.1746031746025" y="906.0" />
+      <point x="875.1144721744115" y="906.0" />
+      <point x="19.125" y="60.5" />
+    </edge>
+    <edge source="model.game.Dungeon" target="model.item.Item">
+      <point x="-37.200000000000045" y="-94.5" />
+      <point x="1215.4746031746024" y="1534.0" />
+      <point x="934.2871438133484" y="1534.0" />
+      <point x="934.2871438133484" y="896.0" />
+      <point x="887.8644721744115" y="896.0" />
+      <point x="31.875" y="60.5" />
+    </edge>
+    <edge source="model.room.DirectionRoom" target="model.game.Direction">
+      <point x="0.0" y="-127.5" />
+      <point x="563.7394721744115" y="846.0" />
+      <point x="497.1996438133484" y="846.0" />
+      <point x="72.0" y="127.5" />
+    </edge>
+    <edge source="model.game.Dungeon" target="model.character.Player">
+      <point x="12.399999999999977" y="-94.5" />
+      <point x="1265.0746031746025" y="1564.0" />
+      <point x="1455.2871438133484" y="1564.0" />
+      <point x="1455.2871438133484" y="531.0" />
+      <point x="1193.2593660355712" y="531.0" />
+      <point x="81.77777777777783" y="83.0" />
+    </edge>
+    <edge source="model.room.DirectionRoom" target="model.item.Item">
+      <point x="80.57142857142844" y="-127.5" />
+      <point x="644.31090074584" y="896.0" />
+      <point x="811.3644721744115" y="896.0" />
+      <point x="-44.625" y="60.5" />
+    </edge>
+    <edge source="model.game.Dungeon" target="model.character.Monster">
+      <point x="-111.60000000000014" y="-94.5" />
+      <point x="1141.0746031746023" y="1564.0" />
+      <point x="118.97519841269786" y="1564.0" />
+      <point x="118.97519841269786" y="906.0" />
+      <point x="209.19964381334842" y="906.0" />
+      <point x="0.0" y="61.0" />
+    </edge>
+    <edge source="model.room.ExitRoomBuilder" target="model.room.DirectionRoom">
+      <point x="73.75" y="-49.0" />
+      <point x="229.35019841269786" y="1873.0" />
+      <point x="650.535714285714" y="1873.0" />
+      <point x="650.535714285714" y="1241.0" />
+      <point x="610.7394721744115" y="1241.0" />
+      <point x="47.0" y="127.5" />
+    </edge>
+    <edge source="model.item.Item" target="model.character.Player">
+      <point x="-51.0" y="-60.5" />
+      <point x="804.9894721744115" y="511.0" />
+      <point x="1050.1482549244602" y="511.0" />
+      <point x="-61.33333333333337" y="83.0" />
+    </edge>
+    <edge source="model.room.RandomRoomBuilder" target="model.room.DirectionRoom">
+      <point x="73.75" y="-49.0" />
+      <point x="614.6537698412692" y="1883.0" />
+      <point x="661.535714285714" y="1883.0" />
+      <point x="661.535714285714" y="1231.0" />
+      <point x="642.072805507745" y="1231.0" />
+      <point x="78.33333333333348" y="127.5" />
+    </edge>
+    <edge source="model.fight.MonsterAttackFirst" target="model.game.Message">
+      <point x="29.75" y="-38.0" />
+      <point x="2045.9121438133484" y="1584.0" />
+      <point x="1979.2644721744114" y="1584.0" />
+      <point x="1979.2644721744114" y="1241.0" />
+      <point x="1872.2315882577934" y="1241.0" />
+      <point x="84.0" y="61.0" />
+    </edge>
+    <edge source="model.item.Bomb" target="model.item.Item">
+      <point x="-38.25" y="-60.5" />
+      <point x="983.0371438133484" y="886.0" />
+      <point x="900.6144721744115" y="886.0" />
+      <point x="44.625" y="60.5" />
+    </edge>
+    <edge source="model.fight.MonsterAttackFirst" target="model.fight.FightSystem">
+      <point x="-89.25" y="-38.0" />
+      <point x="1926.9121438133484" y="1594.0" />
+      <point x="1708.2871438133484" y="1594.0" />
+      <point x="89.25" y="38.0" />
+    </edge>
+    <edge source="model.item.LifePotion" target="model.item.Item">
+      <point x="-38.25" y="-60.5" />
+      <point x="1330.0371438133484" y="866.0" />
+      <point x="926.1144721744115" y="866.0" />
+      <point x="70.125" y="60.5" />
+    </edge>
+    <edge source="model.item.Gold" target="model.character.Player">
+      <point x="-38.25" y="-60.5" />
+      <point x="715.9894721744115" y="501.0" />
+      <point x="1029.7038104800156" y="501.0" />
+      <point x="-81.77777777777783" y="83.0" />
+    </edge>
+    <edge source="model.item.Weapon" target="model.item.Item">
+      <point x="-38.25" y="-60.5" />
+      <point x="1157.0371438133484" y="876.0" />
+      <point x="913.3644721744115" y="876.0" />
+      <point x="57.375" y="60.5" />
+    </edge>
+    <edge source="model.character.Player" target="model.character.Character">
+      <point x="46.0" y="-83.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="model.room.ExitRoomBuilder" target="model.game.Direction">
+      <point x="-73.75" y="-49.0" />
+      <point x="81.85019841269786" y="1893.0" />
+      <point x="11.0" y="1893.0" />
+      <point x="11.0" y="1584.0" />
+      <point x="214.95658825779333" y="1584.0" />
+      <point x="214.95658825779333" y="896.0" />
+      <point x="353.1996438133484" y="896.0" />
+      <point x="-72.0" y="127.5" />
+    </edge>
+    <edge source="model.game.Dungeon" target="model.game.Message">
+      <point x="62.0" y="-94.5" />
+      <point x="1314.6746031746025" y="1584.0" />
+      <point x="1489.5371438133484" y="1584.0" />
+      <point x="1489.5371438133484" y="1221.0" />
+      <point x="1732.2315882577934" y="1221.0" />
+      <point x="-56.0" y="61.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.30000000000000016" x="1156.9999999999995" y="620.9999999999999" />
+  <SelectedNodes>
+    <node>model.game.Message</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
