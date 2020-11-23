@@ -1,6 +1,7 @@
 package model.fight;
 
 import model.character.Character;
+import model.game.Message;
 
 import java.util.List;
 
@@ -10,7 +11,8 @@ public class TurnBasedFight implements FightSystem{
 
 
     @Override
-    public void fight(Character players, Character monsters) {
+    public Message fight(Character players, Character monsters) {
+        return new Message("");
     }
 
     @Override

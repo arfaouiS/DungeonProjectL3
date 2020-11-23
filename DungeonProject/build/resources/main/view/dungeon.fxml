@@ -8,9 +8,9 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane onKeyReleased="#playerMove" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.DungeonController">
-    <VBox layoutX="249.0" layoutY="120.0" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Pane opacity="0.73" prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: brown;">
+<AnchorPane onKeyReleased="#playerMove" prefHeight="577.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.DungeonController">
+    <VBox layoutX="249.0" layoutY="120.0" prefHeight="550.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane opacity="0.73" prefHeight="182.0" prefWidth="800.0" style="-fx-background-color: brown;">
             <HBox layoutY="-1.0" prefHeight="65.0" prefWidth="800.0" spacing="10.0">
                 <Button mnemonicParsing="false" onAction="#displayBag" prefHeight="65.0" prefWidth="135.0" style="-fx-background-color: black; -fx-border-radius: 134;" text="Inventaire" textFill="WHITE" />
                 <VBox>
@@ -19,29 +19,31 @@
                             <StackPane prefHeight="49.0" prefWidth="137.0">
                                 <Label text="Vies" textFill="WHITE">
                                     <font>
-                                        <Font name="System Bold" size="12.0"/>
+                                        <Font name="System Bold" size="12.0" />
                                     </font>
                                 </Label>
                             </StackPane>
                             <HBox fx:id="lifeBox" prefHeight="58.0" prefWidth="137.0">
                                 <StackPane prefHeight="33.0" prefWidth="37.0">
-                                    <Label fx:id="life" prefHeight="17.0" prefWidth="50.0" text="Label"
-                                           textFill="WHITE"/>
+                                    <Label fx:id="life" prefHeight="17.0" prefWidth="50.0" text="Label" textFill="WHITE">
+                              <font>
+                                 <Font name="System Bold" size="12.0" />
+                              </font></Label>
                                 </StackPane>
                                 <StackPane prefHeight="55.0" prefWidth="15.0">
-                                    <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE"/>
+                                    <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                                 </StackPane>
                                 <StackPane prefHeight="55.0" prefWidth="19.0">
-                                    <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE"/>
+                                    <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                                 </StackPane>
                                 <StackPane prefHeight="55.0" prefWidth="18.0">
-                                    <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE"/>
+                                    <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                                 </StackPane>
                                 <StackPane prefHeight="55.0" prefWidth="17.0">
-                                    <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE"/>
+                                    <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                                 </StackPane>
                                 <StackPane prefHeight="55.0" prefWidth="16.0">
-                                    <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE"/>
+                                    <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                                 </StackPane>
                             </HBox>
                         </VBox>
@@ -52,7 +54,7 @@
                     <StackPane prefHeight="33.0" prefWidth="156.0">
                         <Label prefHeight="17.0" prefWidth="91.0" text="Force" textFill="WHITE">
                             <font>
-                                <Font name="System Bold" size="12.0"/>
+                                <Font name="System Bold" size="12.0" />
                             </font>
                         </Label>
                     </StackPane>
@@ -60,12 +62,12 @@
                         <StackPane prefHeight="48.0" prefWidth="52.0">
                             <Label fx:id="strength" text="Label" textFill="WHITE">
                                 <font>
-                                    <Font name="System Bold" size="12.0"/>
+                                    <Font name="System Bold" size="12.0" />
                                 </font>
                             </Label>
                         </StackPane>
                         <StackPane prefHeight="55.0" prefWidth="95.0">
-                            <ProgressBar fx:id="strengthBar" prefWidth="200.0" progress="0.0"/>
+                            <ProgressBar fx:id="strengthBar" prefWidth="200.0" progress="0.0" />
                         </StackPane>
                     </HBox>
                 </VBox>
@@ -92,8 +94,8 @@
                         </Label>
                         <Label fx:id="roomId" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="62.0" textFill="WHITE" />
                     </HBox>
-                    <HBox prefHeight="49.0" prefWidth="172.0">
-                        <Rectangle fill="#bfc7ce" height="45.0" stroke="BLACK" strokeType="OUTSIDE" width="69.0">
+                    <HBox prefHeight="8.0" prefWidth="172.0">
+                        <Rectangle fx:id="directionImage" fill="#bfc7ce" height="41.0" stroke="#b14d4d" strokeType="OUTSIDE" width="51.0">
                             <HBox.margin>
                                 <Insets left="30.0" />
                             </HBox.margin>
@@ -110,7 +112,7 @@
                 </VBox>
             </HBox>
         </Pane>
-        <Pane fx:id="game" prefHeight="455.0" prefWidth="800.0" style="-fx-background-image: url('pictures/ground.png');">
+        <Pane fx:id="game" prefHeight="545.0" prefWidth="800.0" style="-fx-background-image: url('pictures/ground.png');">
             <Polyline fx:id="left" layoutX="110.0" layoutY="111.0" points="-14.999992370605469, -111.00000762939453, -14.999992370605469, 74.0, -144.0, 248.66665649414062, -143.99998474121094, -111.0" smooth="false" strokeType="INSIDE">
                 <fill>
                     <LinearGradient>
@@ -152,8 +154,8 @@
                 <ImageView fx:id="doorPicture" fitHeight="185.0" fitWidth="294.0" layoutX="-1.0" layoutY="24.0" onMouseClicked="#createRoom" pickOnBounds="true" preserveRatio="true" />
             </Pane>
 
-            <VBox fx:id="monsterVBox" layoutX="183.0" layoutY="54.0" prefHeight="415.0" prefWidth="410.0">
-                <ImageView fx:id="monsterImage" fitHeight="328.0" fitWidth="410.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox fx:id="monsterVBox" layoutX="183.0" layoutY="6.0" prefHeight="463.0" prefWidth="410.0">
+                <ImageView fx:id="monsterImage" fitHeight="357.0" fitWidth="410.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="monsterDescription" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" prefHeight="27.0" prefWidth="410.0" text="Label">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -175,6 +177,10 @@
                 <ImageView fx:id="item4" fitHeight="49.0" fitWidth="54.0" layoutX="1.0" layoutY="2.0" onMouseClicked="#collectItem" pickOnBounds="true" preserveRatio="true" />
             </Pane>
         </Pane>
-        <Label fx:id="message" prefHeight="30.0" prefWidth="802.0" />
+      <TextArea fx:id="message" editable="false" prefHeight="200.0" prefWidth="200.0" text="Appuyez sur les fleches du clavier pou vous deplacer">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextArea>
     </VBox>
 </AnchorPane>

@@ -10,22 +10,15 @@ import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 import model.character.Player;
 import model.fight.FightSystem;
-import model.fight.ImmediateFight;
-import model.fight.TurnBasedFight;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class OptionsController implements Initializable {
 
     public ChoiceBox<String> playersComboBox;
     public ChoiceBox<String> fightSystemComboBox;
-
-    List<Player> players = Arrays.asList(new Player("Magician", 5, 150));
-    List<FightSystem> fightSystems = Arrays.asList(new ImmediateFight(),new TurnBasedFight());
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -34,14 +27,14 @@ public class OptionsController implements Initializable {
     }
 
     private void displayPlayerChooser() {
-        for(Player player: players){
+        for(Player player: Game.players){
             playersComboBox.getItems().add(player.getName());
         }
         playersComboBox.getSelectionModel().select(0);
     }
 
     private void displayFightSystemChooser() {
-        for(FightSystem fightSystem: fightSystems){
+        for(FightSystem fightSystem: Game.fightSystems){
             fightSystemComboBox.getItems().add(fightSystem.fightSystemName());
         }
         fightSystemComboBox.getSelectionModel().select(0);
@@ -54,8 +47,8 @@ public class OptionsController implements Initializable {
             Parent root = loader.load();
 
             DungeonController dungeonController = loader.getController();
-            Player player = players.get(playersComboBox.getSelectionModel().getSelectedIndex());
-            FightSystem fightSystem = fightSystems.get(fightSystemComboBox.getSelectionModel().getSelectedIndex());
+            Player player = Game.players.get(playersComboBox.getSelectionModel().getSelectedIndex());
+            FightSystem fightSystem = Game.fightSystems.get(fightSystemComboBox.getSelectionModel().getSelectedIndex());
             dungeonController.setUpGame(player,fightSystem);
 
             Scene scene = new Scene(root);

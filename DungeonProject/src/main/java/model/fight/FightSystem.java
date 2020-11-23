@@ -1,11 +1,12 @@
 package model.fight;
 
 import model.character.Character;
+import model.game.Message;
 
 import java.util.List;
 
 public interface FightSystem {
 
-    void fight(Character player, Character monster);
+    Message fight(Character player, Character monster);
     String fightSystemName();
 }

@@ -27,18 +27,28 @@ public class Dungeon {
     }
 
 
-    public void enterIn(Room room){
+    public Message enterIn(Room room){
         this.currentRoom = room;
+        return new Message("Vous etes rentres dans la salle " + currentRoom.getId());
     }
 
-    public Message playerCollect(Item renderedItem){
-        player.putInBag(renderedItem);
-        return new Message("L'objet est dans l'inventaire");
+    public Message playerCollect(Item item){
+        Message collectMessage = new Message("Le " + player.getName());
+        if(item.isStorableItem()){
+            player.putInBag(item);
+            collectMessage.addInformation(" a collecte l'objet. Allez dans l'inventaire pour l'utiliser");
+        } else {
+            item.usedBy(player);
+            collectMessage.addInformation(" a collecte : " + item.getDescription());
+        }
+        return collectMessage;
     }
 
-    public void playerFight(Monster monster){
-        fightSystem.fight(player, monster);
+    public Message playerFight(Monster monster){
+        return fightSystem.fight(player, monster);
     }
+
+
 
 
 

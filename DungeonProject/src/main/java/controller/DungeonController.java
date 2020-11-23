@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -23,6 +24,7 @@ import model.character.*;
 import model.fight.FightSystem;
 import model.game.Direction;
 import model.game.Dungeon;
+import model.game.Message;
 import model.item.*;
 import model.room.DirectionRoom;
 import model.room.RandomRoomBuilder;
@@ -34,7 +36,7 @@ import java.util.*;
 
 public class DungeonController implements Initializable {
 
-    public Label message;
+    public TextArea message;
     public Pane game;
     public Rectangle inFront;
     public Rectangle directionImage;
@@ -69,7 +71,7 @@ public class DungeonController implements Initializable {
     }
 
     public void setUpGame(Player player, FightSystem fightSystem) {
-        Room room = new Room(new RandomRoomBuilder(), controller.Dungeon.items, controller.Dungeon.monsters);
+        Room room = new Room(new RandomRoomBuilder(), Game.items, Game.monsters);
         this.player = player;
         this.fightSystem = fightSystem;
         this.dungeon = new Dungeon(room, player, fightSystem);
@@ -177,10 +179,14 @@ public class DungeonController implements Initializable {
         }
     }
 
+    public void displayMessage(Message message){
+        this.message.appendText("\n - " + message.toString());
+    }
+
     public void createRoom() {
-        Room newRoom = new Room(new RandomRoomBuilder(), controller.Dungeon.items, controller.Dungeon.monsters);
-        dungeon.enterIn(newRoom);
-        for(Monster monster: controller.Dungeon.monsters){
+        Room newRoom = new Room(new RandomRoomBuilder(), Game.items, Game.monsters);
+        displayMessage(dungeon.enterIn(newRoom));
+        for(Monster monster: Game.monsters){
             monster.setStrengthPoints(monster.getMaxStrengthPoint());
             monster.setLifePoints(monster.getMaxLifePoint());
         }
@@ -213,17 +219,13 @@ public class DungeonController implements Initializable {
         Item item = itemLocalisation.get(currentDirectionRoom).get(itemView);
         currentDirectionRoom.deleteItem(item);
         itemView.setVisible(false);
-        if(item.isStorableItem()){
-            player.putInBag(item);
-        } else {
-            item.usedBy(player);
-            displayGoldAmount();
-        }
+        displayMessage(dungeon.playerCollect(item));
+        displayGoldAmount();
 
     }
 
     public void fight() {
-        dungeon.playerFight(currentDirectionRoom.getMonster());
+        displayMessage(dungeon.playerFight(currentDirectionRoom.getMonster()));
         displayDirectionRoom(currentDirectionRoom);
         displayStrength();
         displayLives();
