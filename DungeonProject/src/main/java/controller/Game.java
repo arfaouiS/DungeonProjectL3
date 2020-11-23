@@ -8,8 +8,8 @@ import javafx.stage.Stage;
 import model.character.Monster;
 import model.character.Player;
 import model.fight.FightSystem;
-import model.fight.ImmediateFight;
-import model.fight.TurnBasedFight;
+import model.fight.MonsterAttackFirst;
+import model.fight.PlayerAttackFirst;
 import model.item.*;
 
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class Game extends Application {
     public static final List<Monster> monsters = Arrays.asList(dragon,xorn,mane);
     public static final List<Item> items = Arrays.asList(new LifePotion(), new Bomb(), new Gold(), new Weapon());
     public static final List<Player> players = Arrays.asList(magician,human);
-    public static final List<FightSystem> fightSystems = Arrays.asList(new ImmediateFight(),new TurnBasedFight());
+    public static final List<FightSystem> fightSystems = Arrays.asList(new MonsterAttackFirst(),new PlayerAttackFirst());
 
 
     @Override

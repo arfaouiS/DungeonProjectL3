@@ -71,6 +71,10 @@ public class DungeonController implements Initializable {
     }
 
     public void setUpGame(Player player, FightSystem fightSystem) {
+        message.setPromptText("Appuyez sur les fleches du clavier pour vous deplacer dans la salle. " +
+                "\nVous ne pouvez pas entrer dans une autre salle si un monstre se trouve devant la porte : " +
+                "\nIl faut alors combattre le monstre. " +
+                "\nPour entrer dans une salle il suffit d'appuyer sur la porte");
         Room room = new Room(new RandomRoomBuilder(), Game.items, Game.monsters);
         this.player = player;
         this.fightSystem = fightSystem;
