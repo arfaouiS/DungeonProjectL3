@@ -10,5 +10,6 @@ public interface RoomBuilder {
     void generateDoors(Room room);
     void generateItems(Room room, List<Item> items);
     void generateMonsters(Room room, List<Monster> monsters);
+    boolean isExitRoom();
 
 }

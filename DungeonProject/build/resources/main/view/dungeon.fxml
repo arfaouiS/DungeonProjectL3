@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane onKeyReleased="#playerMove" prefHeight="577.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.DungeonController">
+<AnchorPane onKeyReleased="#playerMove" prefHeight="577.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DungeonController">
     <VBox layoutX="249.0" layoutY="120.0" prefHeight="550.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Pane opacity="0.73" prefHeight="182.0" prefWidth="800.0" style="-fx-background-color: brown;">
             <HBox layoutY="-1.0" prefHeight="65.0" prefWidth="800.0" spacing="10.0">
@@ -151,7 +151,7 @@
                 </fill>
             </Polyline>
             <Pane fx:id="door" layoutX="270.0" layoutY="-1.0" prefHeight="224.0" prefWidth="294.0">
-                <ImageView fx:id="doorPicture" fitHeight="185.0" fitWidth="294.0" layoutX="-1.0" layoutY="24.0" onMouseClicked="#createRoom" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="doorPicture" fitHeight="185.0" fitWidth="294.0" layoutX="-1.0" layoutY="24.0" onMouseClicked="#enterInNewRoom" pickOnBounds="true" preserveRatio="true" style="-fx-image: url('pictures/door1.png');" />
             </Pane>
 
             <VBox fx:id="monsterVBox" layoutX="183.0" layoutY="6.0" prefHeight="463.0" prefWidth="410.0">

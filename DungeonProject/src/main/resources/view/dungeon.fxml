@@ -151,7 +151,7 @@
                 </fill>
             </Polyline>
             <Pane fx:id="door" layoutX="270.0" layoutY="-1.0" prefHeight="224.0" prefWidth="294.0">
-                <ImageView fx:id="doorPicture" fitHeight="185.0" fitWidth="294.0" layoutX="-1.0" layoutY="24.0" onMouseClicked="#createRoom" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="doorPicture" fitHeight="185.0" fitWidth="294.0" layoutX="-1.0" layoutY="24.0" onMouseClicked="#enterInNewRoom" pickOnBounds="true" preserveRatio="true" style="-fx-image: url('pictures/door1.png');" />
             </Pane>
 
             <VBox fx:id="monsterVBox" layoutX="183.0" layoutY="6.0" prefHeight="463.0" prefWidth="410.0">

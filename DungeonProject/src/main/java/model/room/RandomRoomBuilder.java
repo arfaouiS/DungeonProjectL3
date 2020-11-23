@@ -35,12 +35,16 @@ public class RandomRoomBuilder implements RoomBuilder {
 
     @Override
     public void generateMonsters(Room room, List<Monster> allMonsters) {
-        //TODO: Problème avec la génération de monstre
         Random random = new Random();
         for (DirectionRoom directionRoom : room.getEntireRoom()) {
             if (directionRoom.existDoor() && random.nextBoolean()) {
                 directionRoom.setMonster(allMonsters.get(random.nextInt(allMonsters.size())).clone());
             }
         }
+    }
+
+    @Override
+    public boolean isExitRoom() {
+        return false;
     }
 }

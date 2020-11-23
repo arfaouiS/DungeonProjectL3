@@ -18,7 +18,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Polyline;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -51,18 +50,16 @@ public class DungeonController implements Initializable {
     public Label goldQuantity;
     public Label roomId;
     public Label roomDirection;
-
     public ProgressBar strengthBar;
     public Label strength;
     public HBox lifeBox;
     public Label life;
-    public static int MAX_LIFE_POINTS = 5;
 
-    Player player;
-    FightSystem fightSystem;
-    Dungeon dungeon;
-    DirectionRoom currentDirectionRoom;
-    Map<DirectionRoom, Map<ImageView, Item>> itemLocalisation = new HashMap<>();
+    private Player player;
+    private Dungeon dungeon;
+    private DirectionRoom currentDirectionRoom;
+    private final Map<DirectionRoom, Map<ImageView, Item>> itemLocalisation = new HashMap<>();
+    private final int nbOfRoom = new Random().nextInt(20) + 10;
 
 
     @Override
@@ -72,8 +69,8 @@ public class DungeonController implements Initializable {
     public void setUpGame(Player player, FightSystem fightSystem) {
         Room room = new Room(new RandomRoomBuilder(), OptionsController.items, OptionsController.monsters);
         this.player = player;
-        this.fightSystem = fightSystem;
-        this.dungeon = new Dungeon(room, player, fightSystem);
+        this.dungeon = new Dungeon(room, player, fightSystem,nbOfRoom,
+                OptionsController.monsters,OptionsController.items,new RandomRoomBuilder());
         displayGUI();
     }
 
@@ -105,6 +102,7 @@ public class DungeonController implements Initializable {
         for(int index = 0 ; index <= player.getLifePoints(); index++){
             lifeBox.getChildren().get(index).setVisible(true);
         }
+        int MAX_LIFE_POINTS = 5;
         for (int index = player.getLifePoints() + 1; index <= MAX_LIFE_POINTS; index++){
             lifeBox.getChildren().get(index).setVisible(false);
         }
@@ -112,14 +110,13 @@ public class DungeonController implements Initializable {
 
     public void displayRoom() {
         roomId.setText(String.valueOf(dungeon.getCurrentRoom().getId()));
-        currentDirectionRoom = (dungeon.getCurrentRoom().getDirectionRoom(Direction.NORTH));
-        displayDirectionRoom(currentDirectionRoom);
+        displayDirectionRoom(dungeon.getCurrentRoom().getDirectionRoom(Direction.NORTH));
     }
 
     public void displayDirectionRoom(DirectionRoom directionRoom) {
         currentDirectionRoom = directionRoom;
-        roomDirection.setText(directionRoom.getDirection().toString());
-        doorPicture.setVisible(directionRoom.existDoor());
+        roomDirection.setText(currentDirectionRoom.getDirection().toString());
+        doorPicture.setVisible(currentDirectionRoom.existDoor());
         directionImage.setFill(new ImagePattern(new Image(currentDirectionRoom.getDirection().getImagePath())));
 
         this.monsterVBox.setVisible(currentDirectionRoom.existMonster());
@@ -169,9 +166,8 @@ public class DungeonController implements Initializable {
         this.message.appendText("\n - " + message.toString());
     }
 
-    public void createRoom() {
-        Room newRoom = new Room(new RandomRoomBuilder(), OptionsController.items, OptionsController.monsters);
-        displayMessage(dungeon.enterIn(newRoom));
+    public void enterInNewRoom() {
+        displayMessage(dungeon.enterIn());
         for(Monster monster: OptionsController.monsters){
             monster.setStrengthPoints(monster.getMaxStrengthPoint());
             monster.setLifePoints(monster.getMaxLifePoint());
@@ -206,7 +202,6 @@ public class DungeonController implements Initializable {
         itemView.setVisible(false);
         displayMessage(dungeon.playerCollect(item));
         displayGoldAmount();
-
     }
 
     public void fight(ActionEvent event) {
@@ -215,7 +210,9 @@ public class DungeonController implements Initializable {
         displayStrength();
         displayLives();
         if (!player.isAlive())
-            gameOver(event);
+            endOfGame(event,"Vous avez perdu");
+        if (dungeon.getCurrentRoom().isExitRoom())
+            endOfGame(event,"Felicitation! Vous avez gagne");
     }
 
     public void displaySettings(ActionEvent event){
@@ -233,10 +230,10 @@ public class DungeonController implements Initializable {
         }
     }
 
-    private void gameOver(ActionEvent event) {
+    private void endOfGame(ActionEvent event,String cause) {
         VBox vBox = new VBox();
         vBox.spacingProperty().setValue(10);
-        Label gameOverLabel = new Label("Vous avez perdu");
+        Label gameOverLabel = new Label(cause);
         gameOverLabel.setStyle("-fx-font-weight: bold;");
         Button tryAgainButton = new Button("Rejouer");
 
