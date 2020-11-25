@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane onKeyReleased="#playerMove" prefHeight="577.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DungeonController">
+<AnchorPane onKeyReleased="#playerMove" prefHeight="577.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.DungeonController">
     <VBox layoutX="249.0" layoutY="120.0" prefHeight="550.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Pane opacity="0.73" prefHeight="182.0" prefWidth="800.0" style="-fx-background-color: brown;">
             <HBox layoutY="-1.0" prefHeight="65.0" prefWidth="800.0" spacing="10.0">
